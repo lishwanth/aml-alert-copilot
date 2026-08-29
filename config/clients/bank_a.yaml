@@ -1,0 +1,31 @@
+# "Client" config — Meridian National Bank (illustrative name)
+# Underlying transactions come from the public IBM "Transactions for
+# Anti-Money-Laundering (AML)" dataset (Kaggle, CDLA-Sharing-1.0 license) —
+# real published, labeled data, not fabricated. This config's column
+# mapping represents one possible client export format built on top of
+# that same real data. No proprietary/employer data is used anywhere in
+# this project.
+client_id: bank_a
+client_name: "Meridian National Bank (synthetic)"
+currency: USD
+structuring_threshold: 10000        # regulatory CTR-style reporting threshold used in structuring detection
+lookback_days: 30
+velocity_window_hours: 24
+high_risk_countries: [IR, KP, SY, MM]
+
+# Field mapping: lets the same pipeline code ingest a differently-shaped
+# client export without a rewrite — only this block changes per client.
+transaction_schema:
+  id_field: txn_id
+  amount_field: amount
+  timestamp_field: ts
+  account_field: account_id
+  counterparty_field: counterparty_id
+  country_field: country
+  account_type_field: account_type
+
+risk_rules:
+  - structuring
+  - rapid_layering
+  - high_risk_geo
+  - round_trip

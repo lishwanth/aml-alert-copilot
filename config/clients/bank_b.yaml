@@ -1,0 +1,26 @@
+# "Client" config — Harborview Credit Union (illustrative name)
+# Same underlying real IBM AML dataset as bank_a, exported with
+# deliberately different column names to demonstrate the adapter
+# pattern: onboarding a new client is a config change, not a code
+# change. No fabricated data — only the export shape differs.
+client_id: bank_b
+client_name: "Harborview Credit Union (synthetic)"
+currency: USD
+structuring_threshold: 10000
+lookback_days: 30
+velocity_window_hours: 24
+high_risk_countries: [IR, KP, SY, MM, RU]
+
+transaction_schema:
+  id_field: transaction_ref
+  amount_field: txn_amount
+  timestamp_field: transaction_time
+  account_field: source_acct
+  counterparty_field: dest_acct
+  country_field: dest_country
+  account_type_field: acct_type
+
+risk_rules:
+  - structuring
+  - high_risk_geo
+  - round_trip
