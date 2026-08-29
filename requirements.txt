@@ -1,0 +1,29 @@
+# Planned dependencies — installed incrementally as each phase is built.
+# See README.md roadmap for current status.
+
+# Data & validation
+dlt
+duckdb
+great-expectations
+pandas
+pyyaml
+
+# ML / DL
+xgboost
+scikit-learn
+torch
+# torch-geometric  # stretch goal: GNN layer
+
+# GenAI / agents
+langgraph
+llama-index
+pinecone-client
+ragas
+langfuse
+groq
+# vllm  # exercised on a separate GPU instance, not installed in the app runtime
+
+# App
+fastapi
+uvicorn
+streamlit

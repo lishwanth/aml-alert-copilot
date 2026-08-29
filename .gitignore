@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Data (large/raw files stay out of git; use DVC or a data/ README pointer instead)
+data/raw/*
+data/staging/*
+!data/raw/.gitkeep
+!data/staging/.gitkeep
+
+# Secrets — never commit these
+.env
+*.env
+**/secrets.yaml
+**/*_credentials.json
+
+# Node (if any tooling)
+node_modules/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Build artifacts
+*.pdf
+*.jpg
+dist/
+build/
